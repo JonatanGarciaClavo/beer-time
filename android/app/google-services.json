@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_id": "beertime-b51e6",
+    "project_number": "59803952711",
+    "name": "BeerTime"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59803952711:android:074c90181e17dc36",
+        "client_id": "android:com.beertime",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.beertime"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59803952711-ch4guaat8354cljrdq95kgv9gldg6cuj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.beertime",
+            "certificate_hash": "A15A4895CD52DE87FD006E5C6858FD1DA9BEDB12"
+          }
+        },
+        {
+          "client_id": "59803952711-h4vp2kv45tl72lb6pplemm9emarel85i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

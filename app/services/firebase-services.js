@@ -23,12 +23,11 @@ let FirebaseServices = {
 		console.log('addUser url: ',URL_USERS + _cleanKey(user.email) );
 		let firebaseConnection = new Firebase(URL_USERS + _cleanKey(user.email));
 		return new Promise((resolve, reject)=> {
-			firebaseConnection.on('value', (userDB)=> {
+			firebaseConnection.once('value', (userDB)=> {
 				if (userDB.exists()) {
 					return reject(`User with email $user.email already exists. Please login.`);
 				}
 				firebaseConnection.set(user, (err)=> {
-					firebaseConnection.off();
 					if (err) {
 						return reject(err);
 					}
@@ -49,13 +48,11 @@ let FirebaseServices = {
 	addGroup(group) {
 		let firebaseConnection = new Firebase(URL_GROUPS + _cleanKey(group.name));
 		return new Promise((resolve, reject)=> {
-			firebaseConnection.on('value', (groupDB)=>{
-				firebaseConnection.off('value');
+			firebaseConnection.once('value', (groupDB)=>{
 				if (groupDB.exists()) {
 					return reject('Group with name ' + group.name + ' already exists.');
 				}
 				firebaseConnection.set(group, (err)=> {
-					firebaseConnection.off();
 					if (err) {
 						return reject(err);
 					}
@@ -75,22 +72,20 @@ let FirebaseServices = {
 	addUserToGroup(name, pass, email) {
 		let firebaseConnection = new Firebase(URL_GROUPS + _cleanKey(name));
 		return new Promise((resolve, reject)=> {
-			firebaseConnection.on('value', (groupDB)=> {
+			firebaseConnection.once('value', (groupDB)=> {
 				if (groupDB.exists()){
 					let group = groupDB.val();
 					if (group.pass === pass) {
 						group.users.push(email);
 						firebaseConnection.set(group, (err)=> {
-							firebaseConnection.off();
 							if (err) {
 								return reject(err);
 							}
 							let firebaseConnectionUser = new Firebase(URL_USERS + _cleanKey(email));
-							firebaseConnectionUser.on('value', (userDB)=> {
+							firebaseConnectionUser.once('value', (userDB)=> {
 								let user = userDB.val();
 								user.groups.push(name);
 								firebaseConnectionUser.set(user, (err)=> {
-									firebaseConnectionUser.off();
 									if (err) {
 										return reject(err);
 									}
@@ -112,7 +107,6 @@ let FirebaseServices = {
 		let firebaseConnection = new Firebase(URL_USERS + _cleanKey(email) + '/groups')
 		return new Promise((resolve, reject)=> {
 			firebaseConnection.set(groups, (err)=> {
-				firebaseConnection.off();
 				if (err) {
 					return reject(err);
 				}

@@ -40,7 +40,7 @@ class GroupList extends Component {
 					items={
 						_.map(groups, (group)=> {
 							return {
-								icon: 'face',
+								icon: 'group',
 								value: group.name,
 								label: '' + group.users.length
 							};

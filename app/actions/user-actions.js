@@ -1,4 +1,5 @@
-import { ADD_USER } from '../constants/user-actions-constants';
+import { ADD_USER, UPDATE_USER } from '../constants/user-actions-constants';
+import { ADD_GROUP } from '../constants/groups-actions-constants';
 import FirebaseServices from '../services/firebase-services';
 
 let UserActions = {

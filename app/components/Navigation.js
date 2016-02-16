@@ -30,7 +30,7 @@ class Navigation extends Component {
 
   render() {
     const { route } = this.state;
-    const { authUser } = this.props;
+    const { authUser, groups } = this.props;
 
     return (
       <Drawer>
@@ -41,26 +41,24 @@ class Navigation extends Component {
           </View>
         </Drawer.Header>
         <Drawer.Section
-          title="Components"
+          title="Groups options"
           items={[{
-            icon: 'face',
+            icon: 'group',
             value: 'Groups',
-            label: '1',
+            label: groups.length + '',
             active: route === 'GroupList',
             onPress: () => this.changePage('GroupList'),
             onLongPress: () => this.changePage('GroupList')
           }, {
-            icon: 'format-list-numbered',
+            icon: 'person-add',
             value: 'Join group',
             active: route === 'JoinGroup',
-            label: '12',
             onPress: () => this.changePage('JoinGroup'),
             onLongPress: () => this.changePage('JoinGroup')
           }, {
-            icon: 'format-list-numbered',
+            icon: 'group-add',
             value: 'Create group',
             active: route === 'CreateGroup',
-            label: '12',
             onPress: () => this.changePage('CreateGroup'),
             onLongPress: () => this.changePage('CreateGroup')
           }
